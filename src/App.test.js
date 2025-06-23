@@ -25,7 +25,7 @@ test("displays user info in resume section after input", () => {
     target: { value: "john@example.com" },
   });
   fireEvent.change(screen.getByPlaceholderText(/Phone/i), {
-    target: { value: "1234567890"},
+    target: { value: "1234567890" },
   });
   fireEvent.change(screen.getByPlaceholderText(/LinkedIn URL/i), {
     target: { value: "linkedin.com/in/johndoe" },
