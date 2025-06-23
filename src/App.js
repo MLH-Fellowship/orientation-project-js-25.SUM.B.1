@@ -13,10 +13,10 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you would typically send the data to your Flask backend
-    fetch('http://localhost:5000/contact', {
-      method: 'POST',
+    fetch("http://localhost:5000/contact", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ name, email, phone, linkedin, github }),
     })
@@ -72,9 +72,9 @@ function App() {
         />
         <button type="submit">Save Contact Info</button>
       </form>
-      
+
       {message && <p className="message">{message}</p>}
-      
+
       {/* Display user info in resumeSection */}
       <div className="resumeSection">
         <div className="userInfoDisplay">
