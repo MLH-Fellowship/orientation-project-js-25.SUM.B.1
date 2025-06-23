@@ -8,12 +8,37 @@ function App() {
   const [phone, setPhone] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:5000/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, phone, linkedin, github }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Check if we got back the contact data (which means success)
+        if (data.email || data.phone || data.linkedin || data.github) {
+          setMessage("Contact information saved successfully!");
+        } else {
+          setMessage("Failed to save contact information.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setMessage("An error occurred while saving contact information.");
+      });
+  };
 
   return (
     <div className="App">
       <h1>Resume Builder</h1>
       {/* User Information Section */}
-      <div className="userInfoSection">
+      <form onSubmit={handleSubmit} className="userInfoSection">
         <input
           type="text"
           placeholder="Name"
@@ -28,7 +53,7 @@ function App() {
         />
         <input
           type="tel"
-          placeholder="Phone"
+          placeholder="Phone +1234567890"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
@@ -44,7 +69,11 @@ function App() {
           value={github}
           onChange={(e) => setGithub(e.target.value)}
         />
-      </div>
+        <button type="submit">Save Contact Info</button>
+      </form>
+      
+      {message && <p className="message">{message}</p>}
+      
       {/* Display user info in resumeSection */}
       <div className="resumeSection">
         <div className="userInfoDisplay">
