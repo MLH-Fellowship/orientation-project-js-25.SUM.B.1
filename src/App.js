@@ -12,6 +12,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Here you would typically send the data to your Flask backend
     fetch('http://localhost:5000/contact', {
       method: 'POST',
       headers: {
@@ -111,5 +112,7 @@ function App() {
     </div>
   );
 }
+
+export default App;
 
 export default App;
