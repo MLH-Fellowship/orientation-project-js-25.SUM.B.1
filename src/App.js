@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <h1>Resume Builder</h1>
- 
+
       <div className="userInfoSection">
         <input
           type="text"
@@ -46,12 +46,12 @@ function App() {
           onChange={(e) => setGithub(e.target.value)}
         />
       </div>
- 
+
       <div className="resumeSection">
         <h2>Upload Logo</h2>
         <LogoDropzone />
       </div>
- 
+
       <div className="resumeSection">
         <div className="userInfoDisplay">
           <h2>{name}</h2>
