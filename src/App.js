@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
+import { Link } from "react-router-dom";
 
-function App() {
+function App({ userId, setUserId }) {
   // Add state for user information
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -62,7 +63,11 @@ function App() {
       <div className="resumeSection">
         <h2>Experience</h2>
         <p>Experience Placeholder</p>
-        <button>Add Experience</button>
+
+        <Link to="/AddExperience">
+          {" "}
+          <button>Add experience</button>
+        </Link>
         <br />
       </div>
       <div className="resumeSection">
