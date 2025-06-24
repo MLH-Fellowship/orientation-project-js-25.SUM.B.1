@@ -8,7 +8,6 @@ function App() {
   const [phone, setPhone] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,17 +20,8 @@ function App() {
       body: JSON.stringify({ name, email, phone, linkedin, github }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        // Check if we got back the contact data (which means success)
-        if (data.email || data.phone || data.linkedin || data.github) {
-          setMessage("Contact information saved successfully!");
-        } else {
-          setMessage("Failed to save contact information.");
-        }
-      })
       .catch((error) => {
         console.error("Error:", error);
-        setMessage("An error occurred while saving contact information.");
       });
   };
 
@@ -72,9 +62,7 @@ function App() {
         />
         <button type="submit">Save Contact Info</button>
       </form>
-
-      {message && <p className="message">{message}</p>}
-
+      {/* Remove message display */}
       {/* Display user info in resumeSection */}
       <div className="resumeSection">
         <div className="userInfoDisplay">
