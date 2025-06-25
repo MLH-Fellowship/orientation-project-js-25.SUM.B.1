@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import LogoDropzone from "./LogoDropzone"; // ✅ Import the dropzone component
 
 function App() {
   // Add state for user information
@@ -28,8 +29,13 @@ function App() {
   return (
     <div className="App">
       <h1>Resume Builder</h1>
+<<<<<<< Issue-#1
       {/* User Information Section */}
       <form onSubmit={handleSubmit} className="userInfoSection">
+=======
+
+      <div className="userInfoSection">
+>>>>>>> main
         <input
           type="text"
           placeholder="Name"
@@ -60,10 +66,20 @@ function App() {
           value={github}
           onChange={(e) => setGithub(e.target.value)}
         />
+<<<<<<< Issue-#1
         <button type="submit">Save Contact Info</button>
       </form>
       {/* Remove message display */}
       {/* Display user info in resumeSection */}
+=======
+      </div>
+
+      <div className="resumeSection">
+        <h2>Upload Logo</h2>
+        <LogoDropzone />
+      </div>
+
+>>>>>>> main
       <div className="resumeSection">
         <div className="userInfoDisplay">
           <h2>{name}</h2>
@@ -77,24 +93,28 @@ function App() {
           )}
         </div>
       </div>
+
       <div className="resumeSection">
         <h2>Experience</h2>
         <p>Experience Placeholder</p>
         <button>Add Experience</button>
         <br />
       </div>
+
       <div className="resumeSection">
         <h2>Education</h2>
         <p>Education Placeholder</p>
         <button>Add Education</button>
         <br />
       </div>
+
       <div className="resumeSection">
         <h2>Skills</h2>
         <p>Skill Placeholder</p>
         <button>Add Skill</button>
         <br />
       </div>
+
       <br />
       <button>Export</button>
     </div>
