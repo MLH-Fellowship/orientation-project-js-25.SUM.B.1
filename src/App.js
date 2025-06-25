@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import AddExperience from "./AddExperience";
+import LogoDropzone from "./LogoDropzone"; 
 
 function App() {
   const [name, setName] = useState("");
@@ -45,6 +46,11 @@ function App() {
           value={github}
           onChange={(e) => setGithub(e.target.value)}
         />
+      </div>
+
+      <div className="resumeSection">
+        <h2>Upload Logo</h2>
+        <LogoDropzone />
       </div>
 
       <div className="resumeSection">
