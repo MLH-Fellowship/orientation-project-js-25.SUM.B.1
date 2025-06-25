@@ -29,13 +29,8 @@ function App() {
   return (
     <div className="App">
       <h1>Resume Builder</h1>
-<<<<<<< Issue-#1
       {/* User Information Section */}
       <form onSubmit={handleSubmit} className="userInfoSection">
-=======
-
-      <div className="userInfoSection">
->>>>>>> main
         <input
           type="text"
           placeholder="Name"
@@ -66,18 +61,14 @@ function App() {
           value={github}
           onChange={(e) => setGithub(e.target.value)}
         />
-<<<<<<< Issue-#1
         <button type="submit">Save Contact Info</button>
       </form>
-=======
-      </div>
 
       <div className="resumeSection">
         <h2>Upload Logo</h2>
         <LogoDropzone />
       </div>
 
->>>>>>> main
       <div className="resumeSection">
         <div className="userInfoDisplay">
           <h2>{name}</h2>
