@@ -69,8 +69,6 @@ function App() {
 <<<<<<< Issue-#1
         <button type="submit">Save Contact Info</button>
       </form>
-      {/* Remove message display */}
-      {/* Display user info in resumeSection */}
 =======
       </div>
 
