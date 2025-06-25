@@ -15,11 +15,36 @@ function App() {
       <h1>Resume Builder</h1>
 
       <div className="userInfoSection">
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="tel" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
-        <input type="text" placeholder="LinkedIn URL" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} />
-        <input type="text" placeholder="GitHub URL" value={github} onChange={(e) => setGithub(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="tel"
+          placeholder="Phone"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="LinkedIn URL"
+          value={linkedin}
+          onChange={(e) => setLinkedin(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="GitHub URL"
+          value={github}
+          onChange={(e) => setGithub(e.target.value)}
+        />
       </div>
 
       <div className="resumeSection">
@@ -42,7 +67,9 @@ function App() {
         {showExperienceForm ? (
           <AddExperience onCancel={() => setShowExperienceForm(false)} />
         ) : (
-          <button onClick={() => setShowExperienceForm(true)}>Add Experience</button>
+          <button onClick={() => setShowExperienceForm(true)}>
+            Add Experience
+          </button>
         )}
       </div>
 

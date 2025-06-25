@@ -38,15 +38,44 @@ const AddExperience = ({ onCancel }) => {
   return (
     <div className="experienceForm">
       <div className="form-row">
-        <input type="text" placeholder="Job Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="text" placeholder="Company" value={company} onChange={(e) => setCompany(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Job Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Company"
+          value={company}
+          onChange={(e) => setCompany(e.target.value)}
+        />
       </div>
       <div className="form-row">
-        <input type="text" placeholder="Start Date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-        <input type="text" placeholder="End Date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Start Date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="End Date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
       </div>
-      <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-      <input type="text" placeholder="Logo URL" value={logo} onChange={(e) => setLogo(e.target.value)} />
+      <textarea
+        placeholder="Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Logo URL"
+        value={logo}
+        onChange={(e) => setLogo(e.target.value)}
+      />
       <div className="form-actions">
         <button onClick={handleSubmit}>Submit</button>
         <button onClick={onCancel}>Cancel</button>
