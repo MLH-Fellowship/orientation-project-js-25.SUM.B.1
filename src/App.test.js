@@ -3,13 +3,21 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
 test("renders Resume Builder heading", () => {
-  render(<BrowserRouter><App /></BrowserRouter>);
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
   const headingElement = screen.getByText(/Resume Builder/i);
   expect(headingElement).toBeInTheDocument();
 });
 
 test("renders user info input fields", () => {
-  render(<BrowserRouter><App /></BrowserRouter>);
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
   expect(screen.getByPlaceholderText(/Name/i)).toBeInTheDocument();
   expect(screen.getByPlaceholderText(/Email/i)).toBeInTheDocument();
   expect(screen.getByPlaceholderText(/Phone/i)).toBeInTheDocument();
@@ -18,7 +26,11 @@ test("renders user info input fields", () => {
 });
 
 test("displays user info in resume section after input", () => {
-  render(<BrowserRouter><App /></BrowserRouter>);
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
   fireEvent.change(screen.getByPlaceholderText(/Name/i), {
     target: { value: "John Doe" },
   });
