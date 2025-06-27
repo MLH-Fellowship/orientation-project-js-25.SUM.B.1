@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./App.css";
+import { Link } from "react-router-dom";
 import AddExperience from "./AddExperience";
 import LogoDropzone from "./LogoDropzone";
 
-function App() {
+function App({ userId, setUserId }) {
+  
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -11,11 +13,27 @@ function App() {
   const [github, setGithub] = useState("");
   const [showExperienceForm, setShowExperienceForm] = useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically send the data to your Flask backend
+    fetch("http://localhost:5000/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, phone, linkedin, github }),
+    })
+      .then((response) => response.json())
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <div className="App">
       <h1>Resume Builder</h1>
-
-      <div className="userInfoSection">
+      {/* User Information Section */}
+      <form onSubmit={handleSubmit} className="userInfoSection">
         <input
           type="text"
           placeholder="Name"
@@ -30,7 +48,7 @@ function App() {
         />
         <input
           type="tel"
-          placeholder="Phone"
+          placeholder="Phone +1234567890"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
@@ -46,7 +64,8 @@ function App() {
           value={github}
           onChange={(e) => setGithub(e.target.value)}
         />
-      </div>
+        <button type="submit">Save Contact Info</button>
+      </form>
 
       <div className="resumeSection">
         <h2>Upload Logo</h2>
@@ -88,7 +107,10 @@ function App() {
       <div className="resumeSection">
         <h2>Skills</h2>
         <p>Skill Placeholder</p>
-        <button>Add Skill</button>
+        <Link to="/addSkill">
+          {" "}
+          <button>Add skill</button>
+        </Link>
       </div>
 
       <button>Export</button>
