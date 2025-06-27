@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import AddExperience from "./AddExperience";
-import LogoDropzone from "./LogoDropzone"; 
+import LogoDropzone from "./LogoDropzone";
 
 function App() {
   const [name, setName] = useState("");
