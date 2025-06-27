@@ -5,7 +5,6 @@ import AddExperience from "./AddExperience";
 import LogoDropzone from "./LogoDropzone";
 
 function App({ userId, setUserId }) {
-  
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
