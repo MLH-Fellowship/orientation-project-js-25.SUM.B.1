@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
-export default function AddExperience({ userId, setUserId }) {
+export default function AddSkill({ userId, setUserId }) {
   const [inputs, setInputs] = useState({ name: "", proficiency: "", logo: "" });
   const [alert, setAlert] = useState("");
 
@@ -33,6 +33,10 @@ export default function AddExperience({ userId, setUserId }) {
         console.log("response=====", data);
         if (data.error) {
           setAlert(data.error);
+        }
+        else{
+          console.log("Skill saved successfully!")
+          setInputs({ name: "", proficiency: "", logo: "" });
         }
       })
       .catch((err) => {

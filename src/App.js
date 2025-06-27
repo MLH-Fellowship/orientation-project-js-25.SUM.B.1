@@ -87,11 +87,7 @@ function App({ userId, setUserId }) {
       <div className="resumeSection">
         <h2>Experience</h2>
         <p>Experience Placeholder</p>
-
-        <Link to="/AddExperience">
-          {" "}
           <button>Add experience</button>
-        </Link>
         <br />
       </div>
 
@@ -105,7 +101,10 @@ function App({ userId, setUserId }) {
       <div className="resumeSection">
         <h2>Skills</h2>
         <p>Skill Placeholder</p>
-        <button>Add Skill</button>
+        <Link to="/addSkill">
+          {" "}
+          <button>Add skill</button>
+        </Link>
         <br />
       </div>
 
