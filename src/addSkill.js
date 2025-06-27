@@ -33,9 +33,8 @@ export default function AddSkill({ userId, setUserId }) {
         console.log("response=====", data);
         if (data.error) {
           setAlert(data.error);
-        }
-        else{
-          console.log("Skill saved successfully!")
+        } else {
+          console.log("Skill saved successfully!");
           setInputs({ name: "", proficiency: "", logo: "" });
         }
       })

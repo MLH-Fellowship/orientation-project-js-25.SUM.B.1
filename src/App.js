@@ -87,7 +87,7 @@ function App({ userId, setUserId }) {
       <div className="resumeSection">
         <h2>Experience</h2>
         <p>Experience Placeholder</p>
-          <button>Add experience</button>
+        <button>Add experience</button>
         <br />
       </div>
 
