@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Link } from "react-router-dom";
-import LogoDropzone from "./LogoDropzone"; // ✅ Import the dropzone component
+import AddExperience from "./AddExperience";
+import LogoDropzone from "./LogoDropzone";
 
 function App({ userId, setUserId }) {
-  // Add state for user information
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
+  const [showExperienceForm, setShowExperienceForm] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,15 +88,19 @@ function App({ userId, setUserId }) {
       <div className="resumeSection">
         <h2>Experience</h2>
         <p>Experience Placeholder</p>
-        <button>Add experience</button>
-        <br />
+        {showExperienceForm ? (
+          <AddExperience onCancel={() => setShowExperienceForm(false)} />
+        ) : (
+          <button onClick={() => setShowExperienceForm(true)}>
+            Add Experience
+          </button>
+        )}
       </div>
 
       <div className="resumeSection">
         <h2>Education</h2>
         <p>Education Placeholder</p>
         <button>Add Education</button>
-        <br />
       </div>
 
       <div className="resumeSection">
@@ -105,10 +110,8 @@ function App({ userId, setUserId }) {
           {" "}
           <button>Add skill</button>
         </Link>
-        <br />
       </div>
 
-      <br />
       <button>Export</button>
     </div>
   );
