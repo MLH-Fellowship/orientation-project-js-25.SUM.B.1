@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Orientation Project - JavaScript
 
 Refer to the Fellowship LMS for information!
@@ -73,6 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# MLH-Sum-B1-Orientation
->>>>>>> 450e02ed1bd0efca1ccd215c60fe71fa2a67712d
+
