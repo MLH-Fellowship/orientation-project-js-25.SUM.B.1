@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const url = "http://127.0.0.1:5000/resume/skill/0";
+const url = "http://127.0.0.1:5000/resume/skill";
 
 function SkillForm() {
   const [inputValue, setInputValue] = useState("");
@@ -29,7 +29,7 @@ function SkillForm() {
 
   useEffect(() => {
     getSkill();
-  }, []);
+  },[]);
 
 
 async function submitHandler(e) {
@@ -43,7 +43,7 @@ async function submitHandler(e) {
     }
   });
 
-  const response = await fetch(url, {
+  const response = await fetch(`${url}/0`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
