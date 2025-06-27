@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const url = "http://127.0.0.1:5000/resume/skill";
+const url = "http://127.0.0.1:5000/resume/skill/0";
 
 function SkillForm() {
   const [inputValue, setInputValue] = useState("");
@@ -44,7 +44,7 @@ async function submitHandler(e) {
   });
 
   const response = await fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json"
     },
@@ -53,9 +53,9 @@ async function submitHandler(e) {
 
   if (response.ok) {
     console.log("Submitted successfully");
-    setInputValue("");     
-    setButtonText("Saved successfully"); 
-    getSkill();                 
+    setInputValue("");
+    setButtonText("Saved successfully");
+    getSkill();
   } else {
     console.error("Failed to submit");
   }
@@ -67,7 +67,7 @@ async function submitHandler(e) {
           <textarea
               value={inputValue}
               onChange={(e) => {
-                setInputValue(e.target.value); 
+                setInputValue(e.target.value);
                 setButtonText("Save");
               }}
               rows={6}
