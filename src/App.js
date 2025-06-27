@@ -91,7 +91,6 @@ function App() {
         <button>Add Skill</button>
       </div>
 
-      <br />
       <button>Export</button>
     </div>
   );
