@@ -11,7 +11,7 @@ function App() {
   const [skillEditMode, setSkillEditMode] = useState(false);
   const [experienceEditMode, setExperienceEditMode] = useState(false);
 
-  function addEduHandler(e) {
+  function editEduHandler(e) {
     e.preventDefault();
     setEditMode(true);
   }
@@ -21,7 +21,7 @@ function App() {
     setSkillEditMode(true);
   }
 
-   function addExpHandler(e) {
+   function editExpHandler(e) {
     e.preventDefault();
     setExperienceEditMode(true);
   }
@@ -113,7 +113,8 @@ function App() {
         ) : (
           <div>
             <p>Experience Placeholder</p>
-            <button onClick={addExpHandler}>Add Experience</button>
+            <button className="mx-2" onClick={editExpHandler}>Add Experience</button>
+            <button className="mx-2" onClick={editExpHandler}>Edit Experience</button>
           </div>
         )}
         <br></br>
@@ -126,7 +127,9 @@ function App() {
         ) : (
           <div>
             <p>Education Placeholder</p>
-            <button onClick={addEduHandler}>Add Education</button>
+            <button className="mx-2" onClick={editEduHandler}>Add Education</button>
+            <button className="mx-2" onClick={editEduHandler}>Edit Education</button>
+            
           </div>
         )}
 
@@ -140,11 +143,11 @@ function App() {
         ) : (
           <div>
             <p>Skill Placeholder</p>
-            <Link to="/addSkill">
+            <Link className="mx-2" to="/addSkill">
               {" "}
               <button>Add skill</button>
             </Link>
-            <button onClick={editSkillHandler}>Edit Skill</button>
+            <button className="mx-2" onClick={editSkillHandler}>Edit Skill</button>
           </div>
         )}
       </div>

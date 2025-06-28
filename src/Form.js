@@ -43,8 +43,8 @@ async function submitHandler(e) {
     }
   });
 
-  const response = await fetch(url, {
-    method: "POST",
+  const response = await fetch(`${url}/0`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json"
     },
