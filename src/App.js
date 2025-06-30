@@ -21,7 +21,7 @@ function App() {
     setSkillEditMode(true);
   }
 
-   function editExpHandler(e) {
+  function editExpHandler(e) {
     e.preventDefault();
     setExperienceEditMode(true);
   }
@@ -109,12 +109,16 @@ function App() {
       <div className="resumeSection">
         <h2>Experience</h2>
         {experienceEditMode ? (
-            <ExperienceForm />
+          <ExperienceForm />
         ) : (
           <div>
             <p>Experience Placeholder</p>
-            <button className="mx-2" onClick={editExpHandler}>Add Experience</button>
-            <button className="mx-2" onClick={editExpHandler}>Edit Experience</button>
+            <button className="mx-2" onClick={editExpHandler}>
+              Add Experience
+            </button>
+            <button className="mx-2" onClick={editExpHandler}>
+              Edit Experience
+            </button>
           </div>
         )}
         <br></br>
@@ -123,13 +127,16 @@ function App() {
       <div className="resumeSection">
         <h2>Education</h2>
         {editMode ? (
-            <Form />
+          <Form />
         ) : (
           <div>
             <p>Education Placeholder</p>
-            <button className="mx-2" onClick={editEduHandler}>Add Education</button>
-            <button className="mx-2" onClick={editEduHandler}>Edit Education</button>
-            
+            <button className="mx-2" onClick={editEduHandler}>
+              Add Education
+            </button>
+            <button className="mx-2" onClick={editEduHandler}>
+              Edit Education
+            </button>
           </div>
         )}
 
@@ -139,7 +146,7 @@ function App() {
       <div className="resumeSection">
         <h2>Skills</h2>
         {skillEditMode ? (
-            <SkillForm />
+          <SkillForm />
         ) : (
           <div>
             <p>Skill Placeholder</p>
@@ -147,7 +154,9 @@ function App() {
               {" "}
               <button>Add skill</button>
             </Link>
-            <button className="mx-2" onClick={editSkillHandler}>Edit Skill</button>
+            <button className="mx-2" onClick={editSkillHandler}>
+              Edit Skill
+            </button>
           </div>
         )}
       </div>
