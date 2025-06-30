@@ -20,7 +20,7 @@ const AddExperience = ({ onCancel }) => {
     };
 
     try {
-      const response = await fetch("/resume/experience", {
+      const response = await fetch("http://localhost:5000/resume/experience", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(experience),
