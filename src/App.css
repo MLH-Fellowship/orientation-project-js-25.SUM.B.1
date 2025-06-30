@@ -33,8 +33,14 @@ button {
 }
 
 .userInfoSection {
-  margin-bottom: 24px; /* Adds space below the form */
-  width: 80%; /* Make the edit box even wider */
-  margin-left: 10%; /* Center the wider box */
-  margin-right: 10%; /* Center the wider box */
+  margin-bottom: 24px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
 }

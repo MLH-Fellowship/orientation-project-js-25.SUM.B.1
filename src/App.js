@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Link } from "react-router-dom";
-import LogoDropzone from "./LogoDropzone"; // ✅ Import the dropzone component
+import LogoDropzone from "./LogoDropzone";
+import html2pdf from "html2pdf.js";
 
 function App({ userId, setUserId }) {
-  // Add state for user information
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -13,7 +13,6 @@ function App({ userId, setUserId }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the data to your Flask backend
     fetch("http://localhost:5000/contact", {
       method: "POST",
       headers: {
@@ -27,10 +26,16 @@ function App({ userId, setUserId }) {
       });
   };
 
+  const exportPDF = () => {
+    const element = document.getElementById("resume-content");
+    html2pdf().from(element).save("resume.pdf");
+  };
+
   return (
     <div className="App">
       <h1>Resume Builder</h1>
-      {/* User Information Section */}
+
+      {/* User Info Form */}
       <form onSubmit={handleSubmit} className="userInfoSection">
         <input
           type="text"
@@ -65,51 +70,52 @@ function App({ userId, setUserId }) {
         <button type="submit">Save Contact Info</button>
       </form>
 
-      <div className="resumeSection">
-        <h2>Upload Logo</h2>
-        <LogoDropzone />
-      </div>
+      <div id="resume-content">
+        <div className="resumeSection no-print">
+          <h2>Upload Logo</h2>
+          <LogoDropzone />
+        </div>
 
-      <div className="resumeSection">
-        <div className="userInfoDisplay">
-          <h2>{name}</h2>
-          {(email || phone || linkedin || github) && (
-            <p>
-              {email && <span>{email}</span>}
-              {phone && <span> | {phone}</span>}
-              {linkedin && <span> | {linkedin}</span>}
-              {github && <span> | {github}</span>}
-            </p>
-          )}
+        <div className="resumeSection">
+          <div className="userInfoDisplay">
+            <h2>{name}</h2>
+            {(email || phone || linkedin || github) && (
+              <p>
+                {email && <span>{email}</span>}
+                {phone && <span> | {phone}</span>}
+                {linkedin && <span> | {linkedin}</span>}
+                {github && <span> | {github}</span>}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="resumeSection">
+          <h2>Experience</h2>
+          <p>Experience Placeholder</p>
+        </div>
+
+        <div className="resumeSection">
+          <h2>Education</h2>
+          <p>Education Placeholder</p>
+        </div>
+
+        <div className="resumeSection">
+          <h2>Skills</h2>
+          <p>Skill Placeholder</p>
         </div>
       </div>
 
       <div className="resumeSection">
-        <h2>Experience</h2>
-        <p>Experience Placeholder</p>
-        <button>Add experience</button>
-        <br />
-      </div>
-
-      <div className="resumeSection">
-        <h2>Education</h2>
-        <p>Education Placeholder</p>
-        <button>Add Education</button>
-        <br />
-      </div>
-
-      <div className="resumeSection">
-        <h2>Skills</h2>
-        <p>Skill Placeholder</p>
         <Link to="/addSkill">
-          {" "}
           <button>Add skill</button>
         </Link>
-        <br />
+        <button>Add experience</button>
+        <button>Add Education</button>
       </div>
 
       <br />
-      <button>Export</button>
+      <button onClick={exportPDF}>Export as PDF</button>
     </div>
   );
 }
