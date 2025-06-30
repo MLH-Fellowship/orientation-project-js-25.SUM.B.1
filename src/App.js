@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import "./App.css";
+import Form from "./Form";
+import SkillForm from "./SkillForm";
+import ExperienceForm from "./ExperienceForm";
 import { Link } from "react-router-dom";
 import AddExperience from "./AddExperience";
 import LogoDropzone from "./LogoDropzone";
 
 function App({ userId, setUserId }) {
+  const [editMode, setEditMode] = useState(false);
+  const [skillEditMode, setSkillEditMode] = useState(false);
+  const [experienceEditMode, setExperienceEditMode] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -12,9 +18,23 @@ function App({ userId, setUserId }) {
   const [github, setGithub] = useState("");
   const [showExperienceForm, setShowExperienceForm] = useState(false);
 
+  function editEduHandler(e) {
+    e.preventDefault();
+    setEditMode(true);
+  }
+
+  function editSkillHandler(e) {
+    e.preventDefault();
+    setSkillEditMode(true);
+  }
+
+  function editExpHandler(e) {
+    e.preventDefault();
+    setExperienceEditMode(true);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the data to your Flask backend
     fetch("http://localhost:5000/contact", {
       method: "POST",
       headers: {
@@ -107,7 +127,6 @@ function App({ userId, setUserId }) {
         <h2>Skills</h2>
         <p>Skill Placeholder</p>
         <Link to="/addSkill">
-          {" "}
           <button>Add skill</button>
         </Link>
       </div>
