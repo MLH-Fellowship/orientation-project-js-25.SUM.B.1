@@ -1,28 +1,31 @@
 import "./App.css";
-import Education from './Education';
+import Education from "./Education";
 
 function App() {
   return (
     <div className="App">
       <h1>Resume Builder</h1>
+
       <div className="resumeSection">
         <h2>Experience</h2>
         <p>Experience Placeholder</p>
         <button>Add Experience</button>
-        <br></br>
+        <br />
       </div>
+
       <div className="resumeSection">
         <Education />
-        <button>Add Education</button>
-        <br></br>
+        <br />
       </div>
+
       <div className="resumeSection">
         <h2>Skills</h2>
         <p>Skill Placeholder</p>
         <button>Add Skill</button>
-        <br></br>
+        <br />
       </div>
-      <br></br>
+
+      <br />
       <button>Export</button>
     </div>
   );
