@@ -70,11 +70,36 @@ function App({ userId, setUserId }) {
       <h1>Resume Builder</h1>
 
       <form onSubmit={handleSubmit} className="userInfoSection">
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="tel" placeholder="Phone +1234567890" value={phone} onChange={(e) => setPhone(e.target.value)} />
-        <input type="text" placeholder="LinkedIn URL" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} />
-        <input type="text" placeholder="GitHub URL" value={github} onChange={(e) => setGithub(e.target.value)} />
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="tel"
+          placeholder="Phone +1234567890"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="LinkedIn URL"
+          value={linkedin}
+          onChange={(e) => setLinkedin(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="GitHub URL"
+          value={github}
+          onChange={(e) => setGithub(e.target.value)}
+        />
         <button type="submit">Save Contact Info</button>
       </form>
 
@@ -92,7 +117,13 @@ function App({ userId, setUserId }) {
               {github && <span>{github}</span>}
             </div>
           </div>
-          {logoImage && <img src={logoImage} alt="Uploaded Logo" className="uploaded-logo" />}
+          {logoImage && (
+            <img
+              src={logoImage}
+              alt="Uploaded Logo"
+              className="uploaded-logo"
+            />
+          )}
         </div>
 
         <div className="resumeSection">
@@ -101,7 +132,9 @@ function App({ userId, setUserId }) {
           {showExperienceForm ? (
             <AddExperience onCancel={() => setShowExperienceForm(false)} />
           ) : (
-            <button onClick={() => setShowExperienceForm(true)}>Add Experience</button>
+            <button onClick={() => setShowExperienceForm(true)}>
+              Add Experience
+            </button>
           )}
         </div>
 
