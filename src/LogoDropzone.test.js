@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import LogoDropzone from "./LogoDropzone";
 
-// ✅ Mock fetch to avoid jsdom error during tests
 beforeEach(() => {
   global.fetch = jest.fn(() =>
     Promise.resolve({

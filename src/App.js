@@ -6,17 +6,20 @@ import ExperienceForm from "./ExperienceForm";
 import { Link } from "react-router-dom";
 import AddExperience from "./AddExperience";
 import LogoDropzone from "./LogoDropzone";
+import html2pdf from "html2pdf.js";
 
 function App({ userId, setUserId }) {
   const [editMode, setEditMode] = useState(false);
   const [skillEditMode, setSkillEditMode] = useState(false);
   const [experienceEditMode, setExperienceEditMode] = useState(false);
+  const [showExperienceForm, setShowExperienceForm] = useState(false);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
-  const [showExperienceForm, setShowExperienceForm] = useState(false);
+  const [logoImage, setLogoImage] = useState(null);
 
   function editEduHandler(e) {
     e.preventDefault();
@@ -48,10 +51,24 @@ function App({ userId, setUserId }) {
       });
   };
 
+  const exportPDF = () => {
+    const element = document.getElementById("resume-content");
+    html2pdf()
+      .set({
+        margin: 0.5,
+        filename: "resume.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      })
+      .from(element)
+      .save();
+  };
+
   return (
     <div className="App">
       <h1>Resume Builder</h1>
-      {/* User Information Section */}
+
       <form onSubmit={handleSubmit} className="userInfoSection">
         <input
           type="text"
@@ -86,52 +103,58 @@ function App({ userId, setUserId }) {
         <button type="submit">Save Contact Info</button>
       </form>
 
-      <div className="resumeSection">
-        <h2>Upload Logo</h2>
-        <LogoDropzone />
-      </div>
+      <LogoDropzone onImageUpload={(img) => setLogoImage(img)} />
 
-      <div className="resumeSection">
-        <div className="userInfoDisplay">
-          <h2>{name}</h2>
-          {(email || phone || linkedin || github) && (
-            <p>
-              {email && <span>{email}</span>}
-              {phone && <span> | {phone}</span>}
-              {linkedin && <span> | {linkedin}</span>}
-              {github && <span> | {github}</span>}
-            </p>
+      <div id="resume-content">
+        <div className="pdfHeader">
+          <div className="userInfoText">
+            <h2>{name}</h2>
+            <p>{email}</p>
+            <p>{phone}</p>
+            <div className="links">
+              {linkedin && <span>{linkedin}</span>}
+              {linkedin && github && <span> | </span>}
+              {github && <span>{github}</span>}
+            </div>
+          </div>
+          {logoImage && (
+            <img
+              src={logoImage}
+              alt="Uploaded Logo"
+              className="uploaded-logo"
+            />
           )}
+        </div>
+
+        <div className="resumeSection">
+          <h2>Experience</h2>
+          <p>Experience Placeholder</p>
+          {showExperienceForm ? (
+            <AddExperience onCancel={() => setShowExperienceForm(false)} />
+          ) : (
+            <button onClick={() => setShowExperienceForm(true)}>
+              Add Experience
+            </button>
+          )}
+        </div>
+
+        <div className="resumeSection">
+          <h2>Education</h2>
+          <p>Education Placeholder</p>
+          <button onClick={editEduHandler}>Add Education</button>
+        </div>
+
+        <div className="resumeSection">
+          <h2>Skills</h2>
+          <p>Skill Placeholder</p>
+          <Link to="/addSkill">
+            <button onClick={editSkillHandler}>Add Skill</button>
+          </Link>
         </div>
       </div>
 
-      <div className="resumeSection">
-        <h2>Experience</h2>
-        <p>Experience Placeholder</p>
-        {showExperienceForm ? (
-          <AddExperience onCancel={() => setShowExperienceForm(false)} />
-        ) : (
-          <button onClick={() => setShowExperienceForm(true)}>
-            Add Experience
-          </button>
-        )}
-      </div>
-
-      <div className="resumeSection">
-        <h2>Education</h2>
-        <p>Education Placeholder</p>
-        <button>Add Education</button>
-      </div>
-
-      <div className="resumeSection">
-        <h2>Skills</h2>
-        <p>Skill Placeholder</p>
-        <Link to="/addSkill">
-          <button>Add skill</button>
-        </Link>
-      </div>
-
-      <button>Export</button>
+      <br />
+      <button onClick={exportPDF}>Export as PDF</button>
     </div>
   );
 }

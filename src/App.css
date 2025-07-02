@@ -33,8 +33,124 @@ button {
 }
 
 .userInfoSection {
-  margin-bottom: 24px; /* Adds space below the form */
-  width: 80%; /* Make the edit box even wider */
-  margin-left: 10%; /* Center the wider box */
-  margin-right: 10%; /* Center the wider box */
+  margin-bottom: 24px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.uploaded-logo {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.logo-dropzone {
+  border: 2px dashed #aaa;
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  text-align: center;
+  margin: 1rem auto;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.uploaded-logo-preview {
+  max-width: 100px;
+  margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #resume-content,
+  #resume-content * {
+    visibility: visible;
+  }
+
+  #resume-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1in;
+    width: 100%;
+    background: white;
+    font-family: "Georgia", serif;
+    color: black;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .pdfHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .userInfoText {
+    flex: 1;
+  }
+
+  .userInfoText h2 {
+    font-size: 20pt;
+    font-weight: bold;
+    margin: 0 0 6px;
+  }
+
+  .userInfoText p,
+  .userInfoText .links {
+    font-size: 11pt;
+    font-style: italic;
+    margin: 2px 0;
+  }
+
+  .userInfoText .links span + span {
+    margin-left: 12px;
+  }
+
+  .uploaded-logo {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+    margin-left: 20px;
+  }
+
+  .resumeSection {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+  }
+
+  .resumeSection:last-of-type {
+    border-bottom: none;
+  }
+
+  .resumeSection h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .resumeSection p {
+    font-size: 11pt;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* Hide these in PDF */
+  button,
+  .logo-dropzone,
+  .userInfoSection,
+  .resumeSection:last-child {
+    display: none !important;
+  }
 }

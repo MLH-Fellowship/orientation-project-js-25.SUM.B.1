@@ -1,41 +1,36 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-function LogoDropzone() {
-  const onDrop = useCallback((acceptedFiles) => {
-    const file = acceptedFiles[0];
-    const formData = new FormData();
-    formData.append("file", file);
+function LogoDropzone({ onImageUpload }) {
+  const [logoUrl, setLogoUrl] = useState(null);
 
-    // Simulate server call
-    fetch("/api/upload", {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Upload failed");
-        console.log("File uploaded!");
-      })
-      .catch((err) => {
-        console.error("Upload error:", err);
-      });
-  }, []);
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      const file = acceptedFiles[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setLogoUrl(reader.result);
+        onImageUpload(reader.result);
+      };
+      reader.readAsDataURL(file);
+    },
+    [onImageUpload]
+  );
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: { "image/*": [] },
+  });
 
   return (
-    <div
-      {...getRootProps()}
-      style={{
-        border: "2px dashed #aaa",
-        padding: "2rem",
-        textAlign: "center",
-        marginTop: "1rem",
-      }}
-    >
+    <div className="logo-dropzone" {...getRootProps()}>
       <input {...getInputProps()} data-testid="file-input" />
-      {isDragActive ? (
-        <p>Drop the logo here ...</p>
+      {logoUrl ? (
+        <img
+          src={logoUrl}
+          alt="Uploaded Logo"
+          className="uploaded-logo-preview"
+        />
       ) : (
         <p>Drag and drop your logo here, or click to select</p>
       )}
