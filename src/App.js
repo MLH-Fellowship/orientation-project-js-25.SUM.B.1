@@ -10,6 +10,7 @@ function App({ userId, setUserId }) {
   const [phone, setPhone] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [github, setGithub] = useState("");
+  const [logoImage, setLogoImage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,14 +29,22 @@ function App({ userId, setUserId }) {
 
   const exportPDF = () => {
     const element = document.getElementById("resume-content");
-    html2pdf().from(element).save("resume.pdf");
+    html2pdf()
+      .set({
+        margin: 0.5,
+        filename: "resume.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      })
+      .from(element)
+      .save();
   };
 
   return (
     <div className="App">
       <h1>Resume Builder</h1>
 
-      {/* User Info Form */}
       <form onSubmit={handleSubmit} className="userInfoSection">
         <input
           type="text"
@@ -70,24 +79,27 @@ function App({ userId, setUserId }) {
         <button type="submit">Save Contact Info</button>
       </form>
 
-      <div id="resume-content">
-        <div className="resumeSection no-print">
-          <h2>Upload Logo</h2>
-          <LogoDropzone />
-        </div>
+      <LogoDropzone onImageUpload={(img) => setLogoImage(img)} />
 
-        <div className="resumeSection">
-          <div className="userInfoDisplay">
+      <div id="resume-content">
+        <div className="pdfHeader">
+          <div className="userInfoText">
             <h2>{name}</h2>
-            {(email || phone || linkedin || github) && (
-              <p>
-                {email && <span>{email}</span>}
-                {phone && <span> | {phone}</span>}
-                {linkedin && <span> | {linkedin}</span>}
-                {github && <span> | {github}</span>}
-              </p>
-            )}
+            <p>{email}</p>
+            <p>{phone}</p>
+            <div className="links">
+              {linkedin && <span>{linkedin}</span>}
+              {linkedin && github && <span> | </span>}
+              {github && <span>{github}</span>}
+            </div>
           </div>
+          {logoImage && (
+            <img
+              src={logoImage}
+              alt="Uploaded Logo"
+              className="uploaded-logo"
+            />
+          )}
         </div>
 
         <div className="resumeSection">
