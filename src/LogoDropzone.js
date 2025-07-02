@@ -24,7 +24,7 @@ function LogoDropzone({ onImageUpload }) {
 
   return (
     <div className="logo-dropzone" {...getRootProps()}>
-      <input {...getInputProps()} />
+      <input {...getInputProps()} data-testid="file-input" />
       {logoUrl ? (
         <img
           src={logoUrl}
@@ -32,11 +32,7 @@ function LogoDropzone({ onImageUpload }) {
           className="uploaded-logo-preview"
         />
       ) : (
-        <p>
-          {isDragActive
-            ? "Drop the logo here..."
-            : "Drag and drop logo here, or click to select"}
-        </p>
+        <p>Drag and drop your logo here, or click to select</p>
       )}
     </div>
   );
